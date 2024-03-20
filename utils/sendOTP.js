@@ -8,7 +8,7 @@ export default async function sendOTP(email, otp) {
   console.log(apiKey);
 
   apiKey.apiKey = process.env.BREVO_MAIL_API_KEY;
-  console.log(apiKey);
+  // console.log(apiKey);
 
   try {
     let smtpEmail = new brevo.SendSmtpEmail();
@@ -18,6 +18,7 @@ export default async function sendOTP(email, otp) {
       email : "authentication@roc8_ecomm.com",
       name : "Anmol Kumar the fullstack developer @ roc8_ecomm"
     };
+    // console.log(email);
     smtpEmail.to = [
       {
         email : email
@@ -27,7 +28,7 @@ export default async function sendOTP(email, otp) {
     const sendEmail = await apiInstance.sendTransacEmail(smtpEmail);
     return {status : 200, message : sendEmail};
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
     return {status : 500, message : error.message}
   }
 }

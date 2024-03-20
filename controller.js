@@ -4,6 +4,7 @@ import sendOTPMailWithBrevo from './utils/sendOTP.js'
 
 export const sendOTP = async (req, res) => {
   const { email } = req.body;
+  console.log(email);
   const otp = generateOTP();
 
   const response = await sendOTPMailWithBrevo(email, otp);
